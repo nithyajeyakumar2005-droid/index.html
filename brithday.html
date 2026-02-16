@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Forever ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
+color:white;
+background: radial-gradient(circle at center, #ff4e91 0%, #3a0a3a 50%, #120012 100%);
+}
+
+/* Sparkle Stars */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:1;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3;}
+to{opacity:1;}
+}
+
+/* Floating Color Blobs */
+.blob{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+opacity:0.6;
+z-index:0;
+animation:moveBlob 10s infinite alternate ease-in-out;
+}
+
+.blob1{
+width:300px;
+height:300px;
+background:#ff006e;
+top:10%;
+left:5%;
+}
+
+.blob2{
+width:250px;
+height:250px;
+background:#ff4e91;
+bottom:10%;
+right:5%;
+}
+
+@keyframes moveBlob{
+from{transform:translateY(-20px);}
+to{transform:translateY(20px);}
+}
+
+/* Floating Hearts */
+.heart{
+position:fixed;
+bottom:-10px;
+color:#ff4e91;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+z-index:2;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0) scale(1);opacity:1;}
+100%{transform:translateY(-100vh) scale(1.5);opacity:0;}
+}
+
+/* Sections */
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:60px 20px;
+position:relative;
+z-index:3;
+}
+
+/* Side Images */
+.side-image{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:280px;
+animation:floatSide 4s ease-in-out infinite alternate;
+}
+
+.left-img{ left:30px; }
+.right-img{ right:30px; }
+
+@keyframes floatSide{
+from{transform:translateY(-50%) translateY(-15px);}
+to{transform:translateY(-50%) translateY(15px);}
+}
+
+/* Title */
+.love-title{
+font-size:80px;
+text-shadow:0 0 20px #ff4e91,
+0 0 40px #ff006e,
+0 0 60px #ff4e91;
+animation:fadeDown 2s ease forwards;
+}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.sub-text{
+margin-top:20px;
+font-size:24px;
+max-width:600px;
+line-height:1.6;
+}
+
+button{
+margin-top:40px;
+padding:15px 40px;
+border:none;
+border-radius:30px;
+font-size:18px;
+background:white;
+color:#ff4e91;
+cursor:pointer;
+transition:0.3s;
+animation:pulse 2s infinite;
+}
+
+button:hover{
+background:#ff006e;
+color:white;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+.memories-title{
+font-size:60px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-top:50px;
+width:90%;
+max-width:1100px;
+}
+
+.gallery-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:25px;
+overflow:hidden;
+transition:0.4s;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.gallery-card img{
+width:100%;
+height:300px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.gallery-card:hover{
+transform:rotateY(10deg) scale(1.05);
+box-shadow:0 20px 50px #ff4e91;
+}
+
+.gallery-card:hover img{
+transform:scale(1.1);
+}
+
+.love-box{
+margin-top:60px;
+width:90%;
+max-width:800px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:50px;
+border-radius:30px;
+font-size:22px;
+line-height:1.8;
+box-shadow:0 0 50px rgba(255,0,110,0.8);
+border:1px solid rgba(255,255,255,0.3);
+}
+
+@media(max-width:900px){
+.side-image{ display:none; }
+.love-title{ font-size:50px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+  <source src="../New folder/audio1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener("load", function () {
+    const audio = document.getElementById("bgMusic");
+    audio.volume = 1;
+    audio.play().catch(() => {
+        document.body.addEventListener("click", () => {
+            audio.play();
+        }, { once: true });
+    });
+});
+</script>
+
+<div class="stars"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<script>
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*20)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+<script>
+for(let i=0;i<80;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+star.style.animationDuration=(1+Math.random()*2)+"s";
+document.querySelector(".stars").appendChild(star);
+}
+</script>
+
+<!-- Section 1 -->
+<div class="section">
+
+
+<h1 class="love-title">Happy Birthday My Forever ❤️</h1>
+
+<div class="sub-text">
+You are my happiness, my strength, my everything.  
+Today is special because the most beautiful soul was born 💕
+</div>
+
+<button onclick="document.getElementById('memories').scrollIntoView();">
+See Our Memories 💌
+</button>
+</div>
+
+<!-- Section 2 -->
+<div class="section" id="memories">
+<h1 class="memories-title">Our Beautiful Memories ✨</h1>
+
+<div class="gallery">
+<div class="gallery-card"><img src="../New folder/image1.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image2.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image7.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image8.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image3.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image4.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image5.jpeg"></div>
+<div class="gallery-card"><img src="../New folder/image6.jpeg"></div>
+</div>
+</div>
+
+<!-- Section 3 -->
+<div class="section">
+<h1 class="memories-title">My Promise To You 💍</h1>
+
+<div class="love-box">
+No matter what happens in life,  
+I will stand beside you always.  
+
+You are my peace,  
+my happiness,  
+my forever, my mine❤️
+
+
+Happy Birthday En Thangameyyyyyyyyyyyy 💖
+</div>
+</div>
+
+</body>
+</html>
